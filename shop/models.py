@@ -1,6 +1,20 @@
 from django.db import models
 from django.urls import reverse
 
+class Image(models.Model):
+
+    fname = models.CharField(max_length=50)
+    source = models.URLField(blank=True)
+    # position field
+    position = models.PositiveSmallIntegerField("Position", null=True)
+    class Meta:
+        ordering = ['position']
+        verbose_name = 'product_image',
+        verbose_name_plural = 'product_images'
+    
+    def __str__(self):
+        return self.fname.split('.')[0]
+
 class Category(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, unique=True)
@@ -23,14 +37,16 @@ class Product(models.Model):
         on_delete=models.CASCADE,
         
     )
-    
+    images = models.ForeignKey(
+        Image,
+        related_name='images',
+        on_delete=models.CASCADE
+    )
+    sku = models.CharField(max_length=255, unique=True)
+    title = models.CharField(max_length=200)
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, blank=True, null=True)
     description = models.TextField(blank=True)
-    link = models.URLField(blank=True)
-    name = models.CharField(max_length=200)
-    title = models.CharField(max_length=200)
-    sku = models.CharField(max_length=255, unique=True)
     all_images = models.TextField(blank=True)
     cannonical_url = models.URLField()
     video_url = models.URLField(blank=True)
@@ -47,11 +63,6 @@ class Product(models.Model):
     def __str__(self):
         return self.sku
 
-class Image(models.Model):
-    fname = models.CharField(max_length=50)
-
-    Product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
-    # position field
-    position = models.PositiveSmallIntegerField("Position", null=True)
-    class Meta:
-        ordering = ['position']
+    
+    def get_absolute_url(self):
+        return reverse('shop:product_detail', args=[self.id, self.slug])

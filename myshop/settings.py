@@ -40,12 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'rest_framework',
     
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
     # 'orders.apps.OrdersConfig',
     # 'payment.apps.PaymentConfig',
-    
 ]
 
 MIDDLEWARE = [
@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'myshop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'kkDB.sqlite3'),
     }
 }
 
@@ -153,3 +153,12 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 #     BRAINTREE_PRIVATE_KEY
 # )
 SITE_ID = 1
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+
+}
