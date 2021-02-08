@@ -9,12 +9,23 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
 import os
+from datetime import datetime
+from typing import List, Optional
+from pydantic import BaseModel
 
+class User(BaseModel):
+    id: int
+    name = 'Admin Guy'
+    signup_ts: Optional[datetime] = None
+    friends: List[int] = []
+def load_file(file):
+    with open(file,'rb',) as f:
+        data = json.load(f)
+    return data
+    external_data = load_file('holster_mats.json')
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -26,7 +37,6 @@ SECRET_KEY = 'yf4wk1i8uko8b1ji*ukh8zr)9*$_@1ljufx5%%*^87hyo76kjo'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -44,6 +54,7 @@ INSTALLED_APPS = [
     
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
+    # 'apiv1.apps.Apiv1Config',
     # 'orders.apps.OrdersConfig',
     # 'payment.apps.PaymentConfig',
 ]
@@ -62,7 +73,7 @@ ROOT_URLCONF = 'myshop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -159,6 +170,7 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
-
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
 }

@@ -43,7 +43,7 @@ class Product(models.Model):
         on_delete=models.CASCADE
     )
     sku = models.CharField(max_length=255, unique=True)
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, blank=True)
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, blank=True, null=True)
     description = models.TextField(blank=True)
@@ -55,6 +55,7 @@ class Product(models.Model):
     link = models.URLField()
     discount_tiers = models.CharField(max_length=100, blank=True)
     discount_amount = models.CharField(max_length=100, blank=True)
+    products_id = models.PositiveIntegerField(blank=True)
 
     available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
