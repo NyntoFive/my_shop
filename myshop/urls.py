@@ -21,9 +21,9 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
-router.register(r'products', ProductViewSet)
+# router = routers.DefaultRouter()
+# router.register(r'users', UserViewSet)
+# router.register(r'v1', ProductViewSet)
 
 class PortfolioView(TemplateView):
     template_name = "index.html"

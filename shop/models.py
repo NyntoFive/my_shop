@@ -2,7 +2,6 @@ from django.db import models
 from django.urls import reverse
 
 class Image(models.Model):
-
     fname = models.CharField(max_length=50)
     source = models.URLField(blank=True)
     # position field
@@ -33,7 +32,7 @@ class Category(models.Model):
 class Product(models.Model):
     category = models.ForeignKey(
         Category,
-        related_name='products',
+        related_name='category',
         on_delete=models.CASCADE,
         
     )
@@ -64,6 +63,6 @@ class Product(models.Model):
     def __str__(self):
         return self.sku
 
-    
+
     def get_absolute_url(self):
         return reverse('shop:product_detail', args=[self.id, self.slug])

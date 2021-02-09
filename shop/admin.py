@@ -12,4 +12,6 @@ admin.site.register(Image)
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('sku',)}
-
+    # inlines = [ImageInline]
+class ImageInline(admin.StackedInline):
+    model = Image

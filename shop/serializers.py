@@ -1,28 +1,19 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 from shop.models import Product, Image, Category
 
-class ProductSerializer(ModelSerializer):
+class ImageSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Image
+        fields = '__all__'
+class CategorySerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Category
+        fields = '__all__'
+class ProductSerializer(serializers.ModelSerializer):
+    category = CategorySerializer(required=True)
+    images = ImageSerializer(required=True)
     class Meta:
         model = Product
-        fields = [
-            'id',
-            'category_id',
-            'images_id',
-            'sku',
-            'title',
-            'name',
-            'slug',
-            'description',
-            'all_images',
-            'cannonical_url',
-            'video_url',
-            'price',
-            'keywords',
-            'link',
-            'discount_tiers',
-            'discount_amount',
-            'available',
-            'created',
-            'updated'
-        ]
-
+        fields = '__all__'
