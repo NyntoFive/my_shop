@@ -8,22 +8,11 @@ from shop.models import Image, Category, Product
 from rest_framework import routers, serializers, viewsets
 from django.views.generic import TemplateView
 
-from shop.views import ProductViewSet
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ['url', 'username', 'email', 'is_staff']
-class ProductList(serializers.ListSerializer):
-    model = Product
-    queryset =  Product.objects.all()
-    serializer_class = ProductSerializer
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+from ninja import NinjaAPI
+from blog.api import router as blog_router
 
-# router = routers.DefaultRouter()
-# router.register(r'users', UserViewSet)
-# router.register(r'v1', ProductViewSet)
+api = NinjaAPI()
+api.add_router('/blog/', blog_router)
 
 class PortfolioView(TemplateView):
     template_name = "index.html"
@@ -36,16 +25,16 @@ urlpatterns = [
     path('cart/', include('cart.urls', namespace='cart')),
     # path('orders/', include('orders.urls', namespace='orders')),
     # path('payment/', include('payment.urls', namespace='payment')),
-    # path('drf/', include(router.urls)),
     path(
         'api-auth/',
         include('rest_framework.urls',
             namespace='rest_framework'
         )
     ),
-    path('v1/', ProductViewSet),
-    # path('apivi/', include('apiv1.urls')),
     path('portfolio/', PortfolioView.as_view(), name="portfolio",),
+    path('api/', api.urls),
+    path('blog/', include('blog.urls')),
+    path('myphoto/', include('myphoto.urls')),
     path('', include('shop.urls', namespace='shop')),
 ]
 

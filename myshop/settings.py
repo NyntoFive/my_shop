@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
+    'blog.apps.BlogConfig',
+    'myphoto.apps.MyphotoConfig',
     # 'apiv1.apps.Apiv1Config',
     # 'orders.apps.OrdersConfig',
     # 'payment.apps.PaymentConfig',
@@ -139,10 +141,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static'),
-#     ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+    ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 
 
 MEDIA_URL = '/media/'
