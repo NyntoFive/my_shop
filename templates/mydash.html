@@ -1,0 +1,297 @@
+<html>
+  <head>
+    <base target="_parent" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.11.0/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.15.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.15.0/css/mdb.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/mdb-plugins-gathered.min.css"
+    />{% load static %}
+    <link rel="stylesheet" href="{% static 'css/mydash.css' %}">
+    {% block css %}{% endblock css %}
+
+  </head>
+  <body aria-busy="true">
+    <header>
+      <nav class="navbar fixed-top navbar-expand-lg navbar-dark nosd">
+        <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+        <div class="nav-btn text-right w-100">
+          <button class="snavbarx float-left" type="button">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <button class="navbar-toggler snavbar float-left" type="button">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent-3"
+            aria-controls="navbarSupportedContent-3"
+            aria-expanded="true"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div
+          class="navbar-collapse collapse show"
+          id="navbarSupportedContent-3"
+          
+        >
+          <ul class="navbar-nav ml-auto nav-flex-icons">
+            <li class="nav-item">
+              <a class="nav-link waves-effect waves-light">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-effect waves-light">
+                <i class="fab fa-google-plus-g"></i>
+              </a>
+            </li>
+            <li class="nav-item avatar dropdown">
+              <a
+                class="nav-link dropdown-toggle waves-effect waves-light"
+                id="navbarDropdownMenuLink"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="true"
+              >
+                <img
+                  src="https://s.gravatar.com/avatar/99ca8d83bb38354dc8eac43ac626a96a?size=496&amp;default=retro"
+                  class="rounded-circle border z-depth-0"
+                  alt="avatar image"
+                />
+              </a>
+              <div
+                class="dropdown-menu dropdown-menu-right dropdown-default"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <a class="dropdown-item waves-effect waves-light" href="#"
+                  >Action</a
+                >
+                <a class="dropdown-item waves-effect waves-light" href="#"
+                  >Profile</a
+                >
+                <a class="dropdown-item waves-effect waves-light" href="logout"
+                  >Logout</a
+                >
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <!--Main Navigation-->
+
+    <div class="logodiv fixed-top">
+      <div class="headerdiv">
+        <img
+          src="{% static 'img/bigdeal.png' %}"
+          class="mabalogo"
+          alt=""
+        />
+        <div class="cubed">
+          <div id="cube" class="spinning">
+            <figure class="front">
+              <img
+                class="chw"
+                src="{% static 'img/peach.jpg' %}"
+              />
+            </figure>
+            <figure class="back">
+              <img
+                class="chw"
+                src="{% static 'img/peach.jpg' %}"
+              />
+            </figure>
+            <figure class="right">
+              <img
+                class="chw"
+                src="{% static 'img/peach.jpg' %}"
+              />
+            </figure>
+            <figure class="left">
+              <img
+                class="chw"
+                src="{% static 'img/peach.jpg' %}"
+              />
+            </figure>
+            <figure class="top">
+              <img
+                class="chw"
+                src="{% static 'img/peach.jpg' %}"
+              />
+            </figure>
+            <figure class="bottom">
+              <img
+                class="chw"
+                src="{% static 'img/peach.jpg' %}"
+              />
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar navigation -->
+    <div class="side-nav nosd bg-white ssbar">
+      <ul class="custom-scrollbar">
+        <!-- Side navigation links -->
+        <li>
+          <ul class="collapsible collapsible-accordion">
+            <li class="mainmenu actives">
+              <a class="robotor actives" href="#"
+                ><i class="fab fa-dashcube"></i> Dashboard</a
+              >
+            </li>
+            <li class="mainmenu">
+              <a class="robotor collapsible-header waves-effect arrow-r">
+                <i class="fab fa-buffer"></i> Files
+                <i class="fas fa-angle-down rotate-icon"></i>
+              </a>
+              <div class="collapsible-body">
+                <ul>
+                  <li>
+                    <a class="" href="#">Upload</a>
+                  </li>
+                  <li>
+                    <a class="" href="#">Search</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <!--/. Side navigation links -->
+      </ul>
+      <div class="sidenav-bg rgba-blue-strong1"></div>
+    </div>
+    <!--/. Sidebar navigation -->
+
+    <div id="content" class="content">
+      <div class="container-fluid m-0 p-0">
+        <div class="row m-0 p-0">
+          <div class="col-lg-12 m-0 p-2 text-center text-md-left text-lg-left">
+            <h1>Helloo</h1>
+            {% block content %}
+            <style>
+              body {
+                background-color: #ededed;
+              }
+
+              .rainbow-card:before {
+                height: 4px;
+                width: 100%;
+                content: "";
+                background: linear-gradient(
+                  270deg, /* puroke blue green yellow orange red purple*/
+                  #040404 7.1%, 
+                  #444545 28.4%,
+                  #b0b0b0 42.6%,
+                  #ffffff 56.8%,
+                  #a4a4a4 71%,
+                  #787777 92.9%,
+                  #0e0e0e
+                );
+                background-size: 200% 100%;
+                animation: rainbow 4s linear infinite;
+                border-radius: 0.25rem 0.25em 0 0;
+              }
+
+              .card-menu {
+                justify-content: flex-end;
+              }
+
+              @keyframes rainbow {
+                0% {
+                  background-position: 0 0;
+                }
+                50% {
+                  background-position: -100% 0;
+                }
+                100% {
+                  background-position: -200% 0;
+                }
+              }
+            </style>
+            {% endblock %}
+            <div
+              class="card rainbow-card"
+              style="max-width: 23rem; margin: 3rem auto"
+            >
+              <div class="card-body">
+                <h5 class="card-title">Get started</h5>
+                <p class="card-text">
+                  Some quick example text to build on the panel title and make
+                  up the bulk of the panel's content.
+                </p>
+                <div class="d-flex card-menu">
+                  <a href="#!" class="btn btn-sm btn-flat">Skip for now</a>
+                  <a href="#!" class="btn btn-sm btn-primary">Set up</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footerxxx bg-danger">
+      <div class="container-fluid">
+        <span class="text-white">Place sticky footer content here.</span>
+      </div>
+    </footer>
+    <script
+      type="text/javascript"
+      src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.15.0/js/jquery.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.15.0/js/popper.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.15.0/js/bootstrap.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.15.0/js/mdb.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/js/plugins/mdb-plugins-gathered.min.js"
+    ></script>
+    <script type="text/javascript">
+      {
+        $(".snavbar").on("click", function () {
+          $(".side-nav").toggleClass("ssbar");
+        });
+
+        $(".snavbarx").on("click", function () {
+          $(".side-nav").toggleClass("ssbarx");
+          $(".content").toggleClass("contentx");
+          $(".footerxxx").toggleClass("foot");
+        });
+      }
+    </script>
+
+    <div class="hiddendiv common"></div>
+  </body>
+</html>

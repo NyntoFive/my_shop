@@ -6,16 +6,12 @@ from django.conf.urls.static import static
 from shop.serializers import ProductSerializer
 from shop.models import Image, Category, Product
 from rest_framework import routers, serializers, viewsets
-from django.views.generic import TemplateView
-
 from ninja import NinjaAPI
 from blog.api import router as blog_router
+from . import views
 
 api = NinjaAPI()
 api.add_router('/blog/', blog_router)
-
-class PortfolioView(TemplateView):
-    template_name = "index.html"
 
 
 
@@ -31,10 +27,13 @@ urlpatterns = [
             namespace='rest_framework'
         )
     ),
-    path('portfolio/', PortfolioView.as_view(), name="portfolio",),
+    path('portfolio/', views.PortfolioView.as_view(), name="portfolio",),
+    path('dash/', views.DashboardView.as_view(), name="dash",),
     path('api/', api.urls),
     path('blog/', include('blog.urls')),
+    path('chat/', include('chat.urls')),
     path('myphoto/', include('myphoto.urls')),
+    path('mydash/', views.MyDashView.as_view()),
     path('', include('shop.urls', namespace='shop')),
 ]
 

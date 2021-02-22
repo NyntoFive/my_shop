@@ -4,6 +4,8 @@ from django.urls import reverse
 class Image(models.Model):
     fname = models.CharField(max_length=50)
     source = models.URLField(blank=True)
+    url = models.URLField()
+
     # position field
     position = models.PositiveSmallIntegerField("Position", null=True)
     class Meta:
@@ -12,7 +14,7 @@ class Image(models.Model):
         verbose_name_plural = 'product_images'
     
     def __str__(self):
-        return self.fname.split('.')[0]
+        return self.fname
 
 class Category(models.Model):
     name = models.CharField(max_length=200, db_index=True)
@@ -65,4 +67,4 @@ class Product(models.Model):
 
 
     def get_absolute_url(self):
-        return reverse('shop:product_detail', args=[self.id, self.slug])
+        return reverse('shop:product_detail', args=[self.id])
